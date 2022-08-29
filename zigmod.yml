@@ -1,0 +1,11 @@
+id: pm7pypnziw6jo94xmuxd3ne9cq6ldiz63liu86whojgwujpq
+name: porttime
+main: src/porttime.zig
+license: MIT
+description: A Zig wrapper for PortTime
+
+dependencies:
+  - src: system_lib portmidi
+
+c_include_dirs:
+  - src/include/
