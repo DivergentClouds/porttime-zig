@@ -25,8 +25,14 @@ const PtError = c.PtError;
 /// The possible errors are:
 /// PtAlreadyStarted and PtHostError
 pub fn start(resolution: c_int, callback: ?Callback, user_data: *anyopaque) !void {
-   try errorCheck(
-        c.Pt_Start(resolution, callback, user_data)
+    const wrapper = struct {
+        fn Callback(a: i32, b: *anyopaque) callcov(.C) {
+            return callback.?();
+        }
+    };
+
+    try errorCheck(
+        c.Pt_Start(resolution, wrapper.Callback, user_data)
     );
 }
 
