@@ -21,6 +21,9 @@ const PtError = c.PtError;
 /// `fn(a: i32, b: *anyopaque) callconv(.C) void`
 ///
 /// `user_data` is passed to the function specified by `callback`
+///
+/// The possible errors are:
+/// PtAlreadyStarted and PtHostError
 pub fn start(resolution: c_int, callback: ?Callback, user_data: *anyopaque) !void {
    try errorCheck(
         c.Pt_Start(resolution, callback, user_data)
@@ -28,6 +31,8 @@ pub fn start(resolution: c_int, callback: ?Callback, user_data: *anyopaque) !voi
 }
 
 /// Stop the timer
+///
+/// The only possible error is PtAlreadyStopped 
 pub fn stop() !void {
     try errorCheck(
         c.Pt_Stop()
