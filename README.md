@@ -1,4 +1,4 @@
-# portmidi-zig
+# porttime-zig
 A Zig wrapper for PortTime
 
 ## Dependencies
