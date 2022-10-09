@@ -27,7 +27,7 @@ const PtError = c.PtError;
 pub fn start(resolution: c_int, callback: ?Callback, user_data: *anyopaque) !void {
     const wrapper = struct {
         fn startCallback(a: i32, b: *anyopaque) callconv(.C) Callback {
-            return callback.?();
+            return callback.?(a, b);
         }
     };
 
