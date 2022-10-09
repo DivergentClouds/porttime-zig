@@ -26,7 +26,7 @@ const PtError = c.PtError;
 /// PtAlreadyStarted and PtHostError
 pub fn start(resolution: c_int, callback: ?Callback, user_data: *anyopaque) !void {
     const wrapper = struct {
-        fn Callback(a: i32, b: *anyopaque) callcov(.C) {
+        fn Callback(a: i32, b: *anyopaque) callconv(.C) Callback {
             return callback.?();
         }
     };
